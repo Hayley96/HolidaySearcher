@@ -21,4 +21,8 @@
     <ProjectReference Include="..\HolidaySearcherApp\HolidaySearcherApp\HolidaySearcherApp.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
+
 </Project>
