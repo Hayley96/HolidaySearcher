@@ -5,15 +5,15 @@ namespace HolidaySearcherApp.Services
 {
     public class AirportCode
     {
-        public bool IsListedAirport(dynamic json) =>
-            AirportCodes.Codes.ContainsKey(json.DepartingFrom.ToString());
+        public bool IsListedAirport(SearchString searchstring) =>
+            AirportCodes.Codes.ContainsKey(searchstring.DepartingFrom.ToString());
 
-        public JObject Merge(dynamic json, string valueToCheck)
+        public SearchString Merge(SearchString search, string valueToCheck)
         {
-            json.DepartingFrom = string.Empty;
+            search.DepartingFrom = string.Empty;
             AirportCodes.Codes.Where(pair => pair.Key == valueToCheck).Select(pair => pair.Value)
-                .ToList().ForEach(code => json.DepartingFrom += code + ",");
-            return json;
+                .ToList().ForEach(code => search.DepartingFrom += code + ",");
+            return search;
         }
     }
 }

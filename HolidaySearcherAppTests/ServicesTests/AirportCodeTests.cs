@@ -27,13 +27,12 @@ namespace HolidaySearcherAppTests.ServicesTests
         {
             //Arrange
             var search = TestData.SearchCriteriaAnyLondonAirport();
-            var searchCriteria = _parser.ParseDeserialize<dynamic>(search)!;
+            var searchCriteria = _parser.ParseDeserialize<SearchString>(search)!;
 
             //Act
             var result = _airportCode.IsListedAirport(searchCriteria);
 
             //Assert
-            Assert.That(result, Is.Not.Null);
             Assert.That(result, Is.True);
         }
 
@@ -42,13 +41,12 @@ namespace HolidaySearcherAppTests.ServicesTests
         {
             //Arrange
             var search = TestData.SearchCriteriaNoMatchingAirport();
-            var searchCriteria = _parser.ParseDeserialize<dynamic>(search)!;
+            var searchCriteria = _parser.ParseDeserialize<SearchString>(search)!;
 
             //Act
             var result = _airportCode.IsListedAirport(searchCriteria);
 
             //Assert
-            Assert.That(result, Is.Not.Null);
             Assert.That(result, Is.False);
         }
 
@@ -57,7 +55,7 @@ namespace HolidaySearcherAppTests.ServicesTests
         {
             //Arrange
             var search = TestData.SearchCriteriaAnyLondonAirport();
-            var searchCriteria = _parser.ParseDeserialize<dynamic>(search)!;
+            var searchCriteria = _parser.ParseDeserialize<SearchString>(search)!;
 
             //Act
             var result = _airportCode.Merge(searchCriteria, searchCriteria.DepartingFrom.ToString());
@@ -75,7 +73,7 @@ namespace HolidaySearcherAppTests.ServicesTests
         {
             //Arrange
             var search = TestData.SearchCriteriaAnyAirport();
-            var searchCriteria = _parser.ParseDeserialize<dynamic>(search)!;
+            var searchCriteria = _parser.ParseDeserialize<SearchString>(search)!;
 
             //Act
             var result = _airportCode.Merge(searchCriteria, searchCriteria.DepartingFrom.ToString());

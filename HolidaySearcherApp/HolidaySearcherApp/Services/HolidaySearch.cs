@@ -8,7 +8,7 @@ namespace HolidaySearcherApp.Services
         private Queryer _queryer; AirportCode _airportCode; JsonParser _parser;
         private List<Flight> _flights = new(), _matchingFlights = new();
         private List<Hotel> _hotels = new(), _matchingHotels = new();
-        private dynamic _search = null!;
+        private SearchString _search = null!;
         private int _totalcost;
 
         public HolidaySearch(string searchCriteria)
@@ -24,8 +24,8 @@ namespace HolidaySearcherApp.Services
         public (List<Flight> Flight, List<Hotel> Hotel, int TotalCost) Search(string inputSearch)
         {
             RunParsers(inputSearch);
-            var searchCriteria = RunAirportCodes(_search);
-            if (searchCriteria.Length == 0)
+            SearchString searchCriteria = RunAirportCodes(_search);
+            if (searchCriteria == null)
                 return Results;
             RunQueries(searchCriteria);
             return Results = (_matchingFlights, _matchingHotels, _totalcost);
@@ -35,14 +35,14 @@ namespace HolidaySearcherApp.Services
         {
             _flights = _parser.ParseDeserializeList<Flight>(FileLoader.Load(FileLoader.Path("Flights.json")));
             _hotels = _parser.ParseDeserializeList<Hotel>(FileLoader.Load(FileLoader.Path("Hotels.json")));
-            _search = _parser.ParseDeserialize<dynamic>(inputSearch);
+            _search = _parser.ParseDeserialize<SearchString>(inputSearch);
         }
 
-        private dynamic RunAirportCodes(dynamic search) =>
+        private SearchString RunAirportCodes(SearchString search) =>
             _airportCode.IsListedAirport(search) ?
-                _airportCode.Merge(search, search.DepartingFrom.ToString()) : string.Empty;
+                _airportCode.Merge(search, search.DepartingFrom) : null!;
 
-        private void RunQueries(dynamic searchCriteria)
+        private void RunQueries(SearchString searchCriteria)
         {
             _matchingFlights = _queryer.QueryFlights(_flights, searchCriteria);
             _matchingHotels = _queryer.QueryHotels(_hotels, searchCriteria);
