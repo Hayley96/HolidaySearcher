@@ -30,5 +30,8 @@ namespace HolidaySearcherApp.Services
             }
             return MatchingHotels.ToList();
         }
+
+        public int QueryTotalCost() =>
+            MatchingFlights.First().Price + (MatchingHotels.First().CostPerNight * MatchingHotels.First().Duration);
     }
 }
