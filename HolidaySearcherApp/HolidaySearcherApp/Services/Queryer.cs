@@ -7,25 +7,25 @@ namespace HolidaySearcherApp.Services
         public IOrderedEnumerable<Flight> MatchingFlights { get; private set; } = null!;
         public IOrderedEnumerable<Hotel> MatchingHotels { get; private set; } = null!;
 
-        public List<Flight> QueryFlights(List<Flight> flights, dynamic searchCriteria)
+        public List<Flight> QueryFlights(List<Flight> flights, SearchString searchCriteria)
         {
             if (flights?.Count > 0)
             {
-                MatchingFlights = flights.Where(flight => flight.DepartFrom.Any(x => searchCriteria.DepartingFrom.ToString().Contains(x))
-                && flight.TravelTo.Equals(searchCriteria.TravelingTo.ToString())
-                && DateTime.Parse(flight.DepartureDate).Equals(DateTime.Parse(searchCriteria.DepartureDate.ToString())))
+                MatchingFlights = flights.Where(flight => flight.DepartFrom.Any(x => searchCriteria.DepartingFrom.Contains(x))
+                && flight.TravelTo.Equals(searchCriteria.TravelingTo)
+                && DateTime.Parse(flight.DepartureDate).Equals(DateTime.Parse(searchCriteria.DepartureDate)))
                 .OrderBy(x => x.Price);
             }
             return MatchingFlights.ToList();
         }
 
-        public List<Hotel> QueryHotels(List<Hotel> hotels, dynamic searchCriteria)
+        public List<Hotel> QueryHotels(List<Hotel> hotels, SearchString searchCriteria)
         {
             if (hotels?.Count > 0)
             {
                 MatchingHotels = hotels.Where(hotel => hotel.Duration.ToString().Equals(searchCriteria.Duration.ToString())
-                && hotel.LocalAirports.Contains(searchCriteria.TravelingTo.ToString())
-                && DateTime.Parse(hotel.ArrivalDate).Equals(DateTime.Parse(searchCriteria.DepartureDate.ToString())))
+                && hotel.LocalAirports.Contains(searchCriteria.TravelingTo)
+                && DateTime.Parse(hotel.ArrivalDate).Equals(DateTime.Parse(searchCriteria.DepartureDate)))
                 .OrderBy(x => x.CostPerNight);
             }
             return MatchingHotels.ToList();
