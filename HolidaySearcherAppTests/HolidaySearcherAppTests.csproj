@@ -18,11 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HolidaySearcherApp\HolidaySearcherApp\HolidaySearcherApp.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Data\" />
+    <ProjectReference Include="..\HolidaySearcherApp\HolidaySearcherApp.csproj" />
   </ItemGroup>
 
 </Project>

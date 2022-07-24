@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolidaySearcherApp", "HolidaySearcherApp\HolidaySearcherApp.csproj", "{AAA5699C-5C4E-4FA9-B7BA-D82D31745252}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolidaySearcherApp", "HolidaySearcherApp\HolidaySearcherApp.csproj", "{AAA5699C-5C4E-4FA9-B7BA-D82D31745252}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolidaySearcherAppTests", "..\HolidaySearcherAppTests\HolidaySearcherAppTests.csproj", "{586BC777-D9AA-4C32-9DB8-F2ED3B246E82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolidaySearcherAppTests", "HolidaySearcherAppTests\HolidaySearcherAppTests.csproj", "{7A1706CB-F1E9-46BA-AC83-380B1BBF73B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{AAA5699C-5C4E-4FA9-B7BA-D82D31745252}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAA5699C-5C4E-4FA9-B7BA-D82D31745252}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAA5699C-5C4E-4FA9-B7BA-D82D31745252}.Release|Any CPU.Build.0 = Release|Any CPU
-		{586BC777-D9AA-4C32-9DB8-F2ED3B246E82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{586BC777-D9AA-4C32-9DB8-F2ED3B246E82}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{586BC777-D9AA-4C32-9DB8-F2ED3B246E82}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{586BC777-D9AA-4C32-9DB8-F2ED3B246E82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A1706CB-F1E9-46BA-AC83-380B1BBF73B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A1706CB-F1E9-46BA-AC83-380B1BBF73B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A1706CB-F1E9-46BA-AC83-380B1BBF73B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A1706CB-F1E9-46BA-AC83-380B1BBF73B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
