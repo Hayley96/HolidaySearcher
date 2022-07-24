@@ -10,6 +10,7 @@ namespace HolidaySearcherApp.Services
 
         public JObject Merge(dynamic json, string valueToCheck)
         {
+            json.DepartingFrom = string.Empty;
             AirportCodes.Codes.Where(pair => pair.Key == valueToCheck).Select(pair => pair.Value)
                 .ToList().ForEach(code => json.DepartingFrom += code + ",");
             return json;
