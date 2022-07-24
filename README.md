@@ -92,7 +92,7 @@ Fork this repo to your Github and then clone the forked version of this repo.
 
 ### Running the Unit Tests <a name="runningtests"></a>
 
-- You can run the unit tests in Visual Studio, or you can go to your terminal and inside the root of this directory [HolidaySearcherApp](../):
+- You can run the unit tests in Visual Studio, or you can go to your terminal and inside the root of this directory [HolidaySearcher](.):
  - run: `dotnet test`
 
 
