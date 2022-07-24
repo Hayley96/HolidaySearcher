@@ -8,11 +8,15 @@ namespace HolidaySearcherAppTests.ServicesTests
     {
         private HolidaySearch? _holidaySearch;
         private JsonParser _parser;
+        private Queryer _queryer;
+        private AirportCode _airportCode;
 
         [SetUp]
         public void Setup()
         {
             _parser = new();
+            _queryer = new();
+            _airportCode = new();
         }
 
         [Test]
@@ -22,7 +26,7 @@ namespace HolidaySearcherAppTests.ServicesTests
             var search = TestData.SearchCriteriaMANAirport();
 
             //Act
-            _holidaySearch = new(search);
+            _holidaySearch = new(search, _queryer, _airportCode, _parser);
 
             //Assert
             Assert.That(_holidaySearch.Results, Is.TypeOf(typeof(ValueTuple<List<Flight>, List<Hotel>, int>)));
@@ -94,7 +98,7 @@ namespace HolidaySearcherAppTests.ServicesTests
             var search = TestData.SearchCriteriaInvalidJson();
 
             //Act
-            var result = _holidaySearch = new(search);
+            var result = _holidaySearch = new(search, _queryer, _airportCode, _parser);
 
             //Assert
             Assert.That(result, Is.TypeOf(typeof(HolidaySearch)));
@@ -107,7 +111,7 @@ namespace HolidaySearcherAppTests.ServicesTests
             var search = string.Empty;
 
             //Act
-            var result = _holidaySearch = new(search);
+            var result = _holidaySearch = new(search, _queryer, _airportCode, _parser);
 
             //Assert
             Assert.That(result, Is.TypeOf(typeof(HolidaySearch)));

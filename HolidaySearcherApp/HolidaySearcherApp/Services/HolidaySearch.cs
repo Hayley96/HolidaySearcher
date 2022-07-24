@@ -11,11 +11,11 @@ namespace HolidaySearcherApp.Services
         private SearchString _search = null!;
         private int _totalcost;
 
-        public HolidaySearch(string searchCriteria)
+        public HolidaySearch(string searchCriteria, Queryer queryer, AirportCode airportCode, JsonParser parser)
         {
-            _queryer = new();
-            _airportCode = new();
-            _parser = new();
+            _queryer = queryer;
+            _airportCode = airportCode;
+            _parser = parser;
             if (!string.IsNullOrEmpty(searchCriteria) && _parser.IsValidJson(searchCriteria))
                 Search(searchCriteria);
             return;
