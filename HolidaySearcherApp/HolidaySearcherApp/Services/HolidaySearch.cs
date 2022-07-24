@@ -4,10 +4,13 @@ namespace HolidaySearcherApp.Services
 {
     public class HolidaySearch
     {
-        private Queryer _queryer { get; set; }
-        private AirportCode _airportCode { get; set; }
-        private JsonParser _parser { get; set; }
         public (List<Flight> Flight, List<Hotel> Hotel, int TotalCost) Results { get; private set; } = new();
+        private Queryer _queryer; AirportCode _airportCode; JsonParser _parser;
+        private List<Flight> _flights = new(), _matchingFlights = new();
+        private List<Hotel> _hotels = new(), _matchingHotels = new();
+        private dynamic _search = null!;
+        private int _totalcost;
+
         public HolidaySearch(string searchCriteria)
         {
             _queryer = new();
@@ -20,21 +23,30 @@ namespace HolidaySearcherApp.Services
 
         public (List<Flight> Flight, List<Hotel> Hotel, int TotalCost) Search(string inputSearch)
         {
-            dynamic searchCriteria;
-            var flights = _parser.ParseDeserializeList<Flight>(FileLoader.Load(FileLoader.Path("Flights.json")));
-            var hotels = _parser.ParseDeserializeList<Hotel>(FileLoader.Load(FileLoader.Path("Hotels.json")));
-            var search = _parser.ParseDeserialize<dynamic>(inputSearch);
-
-            searchCriteria = _airportCode.IsListedAirport(search) ?
-                _airportCode.Merge(search, search.DepartingFrom.ToString()) : string.Empty;
+            RunParsers(inputSearch);
+            var searchCriteria = RunAirportCodes(_search);
             if (searchCriteria.Length == 0)
                 return Results;
+            RunQueries(searchCriteria);
+            return Results = (_matchingFlights, _matchingHotels, _totalcost);
+        }
 
-            List<Flight> matchingFlights = _queryer.QueryFlights(flights, searchCriteria);
-            List<Hotel> matchingHotels = _queryer.QueryHotels(hotels, searchCriteria);
-            int totalCost = _queryer.QueryTotalCost();
+        private void RunParsers(string inputSearch)
+        {
+            _flights = _parser.ParseDeserializeList<Flight>(FileLoader.Load(FileLoader.Path("Flights.json")));
+            _hotels = _parser.ParseDeserializeList<Hotel>(FileLoader.Load(FileLoader.Path("Hotels.json")));
+            _search = _parser.ParseDeserialize<dynamic>(inputSearch);
+        }
 
-            return Results = (matchingFlights, matchingHotels, totalCost);
+        private dynamic RunAirportCodes(dynamic search) =>
+            _airportCode.IsListedAirport(search) ?
+                _airportCode.Merge(search, search.DepartingFrom.ToString()) : string.Empty;
+
+        private void RunQueries(dynamic searchCriteria)
+        {
+            _matchingFlights = _queryer.QueryFlights(_flights, searchCriteria);
+            _matchingHotels = _queryer.QueryHotels(_hotels, searchCriteria);
+            _totalcost = _queryer.QueryTotalCost();
         }
     }
 }
