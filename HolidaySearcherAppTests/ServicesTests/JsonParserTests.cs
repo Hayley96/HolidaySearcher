@@ -74,6 +74,21 @@ namespace HolidaySearcherAppTests.ServicesTests
         }
 
         [Test]
+        public void ParseDeserialize_Returns_StringJson__Containing_Hotel_Data_When_T_Is_Hotel()
+        {
+            //Arrange
+            var hotels = TestData.GetHotelInstances();
+
+            //Act
+            string result = _parser.ParseSerialize<Hotel>(hotels);
+
+            //Assert
+            Assert.That(result, Is.TypeOf(typeof(string)));
+            result.Should().Contain("Barcelo Malaga");
+            result.Should().Contain("Club Maspalomas Suites and Spa");
+        }
+
+        [Test]
         public void ParseSerialize_Returns_Json_Of_Type_T()
         {
             //Arrange
