@@ -8,8 +8,8 @@
             var currentDir = Directory.GetCurrentDirectory();
 
             PathToFile = (currentDir.ToLower().Contains(@"\bin\debug") || currentDir.ToLower().Contains(@"\bin\release")) ?
-                 Directory.GetParent(currentDir)!.Parent!.Parent!.FullName + $"\\Data\\{filename}".ToString() :
-                 $"{currentDir}\\Data\\{filename}".ToString();
+                 Directory.GetParent(currentDir)!.Parent!.Parent!.FullName + @$"\Data\{filename}".ToString() :
+                 @$"{currentDir}\Data\{filename}".ToString();
 
             return File.Exists(PathToFile) ? PathToFile : string.Empty;
         }

@@ -44,7 +44,7 @@ namespace HolidaySearcherAppTests.ServicesTests
             var search = TestData.SearchCriteriaMANAirport();
 
             //Act
-            var result = _holidaySearch!.Search(search);
+            var result = _holidaySearch!.Run(search);
 
             //Assert
             Assert.That(result, Is.TypeOf(typeof(ValueTuple<List<Flight>, List<Hotel>, int>)));
@@ -62,7 +62,7 @@ namespace HolidaySearcherAppTests.ServicesTests
             var search = TestData.SearchCriteriaAnyLondonAirport();
 
             //Act
-            var result = _holidaySearch!.Search(search);
+            var result = _holidaySearch!.Run(search);
 
             //Assert
             Assert.That(result, Is.TypeOf(typeof(ValueTuple<List<Flight>, List<Hotel>, int>)));
@@ -80,7 +80,7 @@ namespace HolidaySearcherAppTests.ServicesTests
             var search = TestData.SearchCriteriaAnyAirport();
 
             //Act
-            var result = _holidaySearch!.Search(search);
+            var result = _holidaySearch!.Run(search);
 
             //Assert
             Assert.That(result, Is.TypeOf(typeof(ValueTuple<List<Flight>, List<Hotel>, int>)));
