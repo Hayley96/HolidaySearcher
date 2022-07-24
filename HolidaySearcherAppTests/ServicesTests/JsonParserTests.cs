@@ -1,6 +1,8 @@
 ﻿using FluentAssertions;
+using HolidaySearchAppTests.Data;
 using HolidaySearcherApp.Models;
 using HolidaySearcherApp.Services;
+using Newtonsoft.Json.Linq;
 
 namespace HolidaySearcherAppTests.ServicesTests
 {
@@ -53,6 +55,22 @@ namespace HolidaySearcherAppTests.ServicesTests
 
             //Assert
             result.Should().BeNullOrEmpty();
+        }
+
+        [Test]
+        public void ParseDeserialize_Returns_Type_T_Json()
+        {
+            //Arrange
+            var search = TestData.SearchCriteriaMANAirport();
+
+            //Act
+            var result = _parser.ParseDeserialize<dynamic>(search);
+
+            //Assert
+            Assert.That(result, Is.TypeOf(typeof(JObject)));
+            Assert.That(result, Has.Count.EqualTo(4));
+            Assert.That(result.DepartingFrom == "MAN");
+            Assert.That(result.TravelingTo == "AGP");
         }
     }
 }
