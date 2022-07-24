@@ -27,6 +27,10 @@ The project structure consists of the following:
 
 ## :computer: Application Overview <a name="applicationOverview"></a>
 
+Class Diagram:
+
+![](https://github.com/Hayley96/HolidaySearcher/blob/main/Resources/HolidaySearcherUML.png)
+
 The application consists of the following main components:
 
 * FileLoader
