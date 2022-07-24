@@ -53,6 +53,17 @@ namespace HolidaySearchAppTests.Data
               Duration: 14
             }");
         }
+
+        public static string SearchCriteriaNoMatchingAirport()
+        {
+            return (@"{
+              DepartingFrom: 'ZZZZZ',
+              TravelingTo: 'LPA',
+              DepartureDate: '2022/11/10',
+              Duration: 14
+            }");
+        }
+
         public static List<Flight> GetFlightInstances()
         {
             return new List<Flight>
