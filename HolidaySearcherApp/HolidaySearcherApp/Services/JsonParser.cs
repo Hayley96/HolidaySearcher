@@ -24,8 +24,7 @@ namespace HolidaySearcherApp.Services
             }
             catch (JsonReaderException jex)
             {
-                Debug.WriteLine($"{jex.Message}"); //would look to write to a logger here
-                Console.WriteLine("An invalid Json character was detected..Please try again");
+                Debug.WriteLine($"{jex.Message}"); //in real app, write to a logger
                 return false;
             }
         }
