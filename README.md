@@ -1,4 +1,4 @@
-# ✈️ Holiday Search
+# ✈️ Holiday Search 🏖️
 A Console app designed to read data from two Json files, run queries on the parsed data, and return records.
 
 ## :link: Table of contents
