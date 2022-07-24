@@ -51,5 +51,36 @@ namespace HolidaySearcherAppTests.ServicesTests
             result.Should().BeOfType(typeof(List<Flight>));
             result.Count.Should().Be(0);
         }
+
+        [Test]
+        public void SearchHotels_Returns_A_List_Of_Matching_Hotels_For_SearchCriteria_MAN_Airport()
+        {
+            //Arrange
+            var search = TestData.SearchCriteriaMANAirport();
+            var searchCriteria = _parser.ParseDeserialize<dynamic>(search)!;
+
+            //Act
+            List<Hotel> result = _searcher.QueryHotels(_hotels, searchCriteria);
+
+            //Assert
+            result.Should().BeOfType(typeof(List<Hotel>));
+            result.Count.Should().Be(1);
+            result.First().Id = 9;
+        }
+
+        [Test]
+        public void SearchHotels_Returns_Empty_List_If_No_Matching_Results_Found()
+        {
+            //Arrange
+            var search = TestData.SearchCriteriaNoMatchingResults();
+            var searchCriteria = _parser.ParseDeserialize<dynamic>(search)!;
+
+            //Act
+            List<Hotel> result = _searcher.QueryHotels(_hotels, searchCriteria);
+
+            //Assert
+            result.Should().BeOfType(typeof(List<Hotel>));
+            result.Count.Should().Be(0);
+        }
     }
 }
