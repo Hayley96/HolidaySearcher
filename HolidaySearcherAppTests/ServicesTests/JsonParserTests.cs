@@ -72,5 +72,59 @@ namespace HolidaySearcherAppTests.ServicesTests
             Assert.That(result.DepartingFrom == "MAN");
             Assert.That(result.TravelingTo == "AGP");
         }
+
+        [Test]
+        public void ParseSerialize_Returns_Json_Of_Type_T()
+        {
+            //Arrange
+            var search = TestData.GetFlightInstances();
+
+            //Act
+            var result = _parser.ParseSerialize<Flight>(search);
+
+            //Assert
+            result.Should().NotBeNullOrEmpty();
+            result.Should().Contain("First Class Air");
+            result.Should().Contain("Trans American Airlines");
+        }
+
+        [Test]
+        public void IsValidJson_Returns_True_If_Valid_Json_String_Passed()
+        {
+            //Arrange
+            var search = TestData.SearchCriteriaMANAirport();
+
+            //Act
+            var result = _parser.IsValidJson(search);
+
+            //Assert
+            Assert.True(result);
+        }
+
+        [Test]
+        public void IsValidJson_Returns_False_If_InValid_Json_String_Passed()
+        {
+            //Arrange
+            var search = TestData.SearchCriteriaInvalidJson();
+
+            //Act
+            var result = _parser.IsValidJson(search);
+
+            //Assert
+            Assert.False(result);
+        }
+
+        [Test]
+        public void IsValidJson_Returns_False_If_Empty_String_Passed()
+        {
+            //Arrange
+            var search = string.Empty;
+
+            //Act
+            var result = _parser.IsValidJson(search);
+
+            //Assert
+            Assert.False(result);
+        }
     }
 }
