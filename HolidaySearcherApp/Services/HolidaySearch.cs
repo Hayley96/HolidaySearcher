@@ -25,7 +25,7 @@ namespace HolidaySearcherApp.Services
 
             SearchString searchCriteria = _airportCode.IsListedAirport(_searchString, _searchString.DepartingFrom) ?
                 _airportCode.IsListedAirport(_searchString, _searchString.TravelingTo) ?
-                _airportCode.Merge(_searchString, _searchString.DepartingFrom) : null! : null!;
+                    _airportCode.Merge(_searchString, _searchString.DepartingFrom) : null! : null!;
             if (searchCriteria is null) { return Results; }
 
             var _matchingFlights = _queryer.QueryFlights(_flights, searchCriteria);
