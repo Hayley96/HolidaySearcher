@@ -6,10 +6,10 @@ namespace HolidaySearcherApp.Services
 {
     public class JsonParser
     {
-        public List<T> ParseDeserializeList<T>(string json) =>
+        public List<T> ParseReturnInstanceList<T>(string json) =>
             JsonConvert.DeserializeObject<List<T>>(json)!;
 
-        public T ParseDeserialize<T>(string json) =>
+        public T ParseReturnInstanceSingle<T>(string json) =>
             JsonConvert.DeserializeObject<T>(json)!;
 
         public bool IsValidJson(string json)

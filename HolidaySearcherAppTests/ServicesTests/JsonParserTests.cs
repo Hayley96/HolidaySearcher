@@ -24,7 +24,7 @@ namespace HolidaySearcherAppTests.ServicesTests
             var Json = FileLoader.Load(file);
 
             //Act
-            var result = _parser.ParseDeserializeList<Flight>(Json);
+            var result = _parser.ParseReturnInstanceList<Flight>(Json);
 
             //Assert
             result.Should().BeOfType(typeof(List<Flight>));
@@ -40,7 +40,7 @@ namespace HolidaySearcherAppTests.ServicesTests
             var Json = FileLoader.Load(file);
 
             //Act
-            var result = _parser.ParseDeserializeList<Hotel>(Json);
+            var result = _parser.ParseReturnInstanceList<Hotel>(Json);
 
             //Assert
             result.Should().BeOfType(typeof(List<Hotel>));
@@ -51,7 +51,7 @@ namespace HolidaySearcherAppTests.ServicesTests
         public void ParseDeserializeList_Returns_Empty_List_When_Type_T_Is_Flight_But_Json_String_Is_Empty()
         {
             //Act
-            var result = _parser.ParseDeserializeList<Flight>("");
+            var result = _parser.ParseReturnInstanceList<Flight>("");
 
             //Assert
             result.Should().BeNullOrEmpty();
@@ -64,7 +64,7 @@ namespace HolidaySearcherAppTests.ServicesTests
             var search = TestData.SearchCriteriaMANAirport();
 
             //Act
-            var result = _parser.ParseDeserialize<dynamic>(search);
+            var result = _parser.ParseReturnInstanceSingle<dynamic>(search);
 
             //Assert
             Assert.That(result, Is.TypeOf(typeof(JObject)));

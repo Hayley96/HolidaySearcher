@@ -26,7 +26,7 @@ namespace HolidaySearcherAppTests.ServicesTests
         {
             //Arrange
             var search = TestData.SearchCriteriaMANAirport();
-            var searchCriteria = _parser.ParseDeserialize<SearchString>(search)!;
+            var searchCriteria = _parser.ParseReturnInstanceSingle<SearchString>(search)!;
 
             //Act
             List<Flight> result = _queryer.QueryFlights(_flights, searchCriteria);
@@ -42,7 +42,7 @@ namespace HolidaySearcherAppTests.ServicesTests
         {
             //Arrange
             var search = TestData.SearchCriteriaAnyLondonAirport();
-            var searchCriteria = _parser.ParseDeserialize<SearchString>(search)!;
+            var searchCriteria = _parser.ParseReturnInstanceSingle<SearchString>(search)!;
 
             //Act
             List<Flight> result = _queryer.QueryFlights(_flights, searchCriteria);
@@ -58,7 +58,7 @@ namespace HolidaySearcherAppTests.ServicesTests
         {
             //Arrange
             var search = TestData.SearchCriteriaAnyAirport();
-            var searchCriteria = _parser.ParseDeserialize<SearchString>(search)!;
+            var searchCriteria = _parser.ParseReturnInstanceSingle<SearchString>(search)!;
 
             //Act
             List<Flight> result = _queryer.QueryFlights(_flights, searchCriteria);
@@ -74,7 +74,7 @@ namespace HolidaySearcherAppTests.ServicesTests
         {
             //Arrange
             var search = TestData.SearchCriteriaNoMatchingResults();
-            var searchCriteria = _parser.ParseDeserialize<SearchString>(search)!;
+            var searchCriteria = _parser.ParseReturnInstanceSingle<SearchString>(search)!;
 
             //Act
             List<Flight> result = _queryer.QueryFlights(_flights, searchCriteria);
@@ -89,7 +89,7 @@ namespace HolidaySearcherAppTests.ServicesTests
         {
             //Arrange
             var search = TestData.SearchCriteriaMANAirport();
-            var searchCriteria = _parser.ParseDeserialize<SearchString>(search)!;
+            var searchCriteria = _parser.ParseReturnInstanceSingle<SearchString>(search)!;
 
             //Act
             List<Hotel> result = _queryer.QueryHotels(_hotels, searchCriteria);
@@ -105,7 +105,7 @@ namespace HolidaySearcherAppTests.ServicesTests
         {
             //Arrange
             var search = TestData.SearchCriteriaAnyLondonAirport();
-            var searchCriteria = _parser.ParseDeserialize<SearchString>(search)!;
+            var searchCriteria = _parser.ParseReturnInstanceSingle<SearchString>(search)!;
 
             //Act
             List<Hotel> result = _queryer.QueryHotels(_hotels, searchCriteria);
@@ -121,7 +121,7 @@ namespace HolidaySearcherAppTests.ServicesTests
         {
             //Arrange
             var search = TestData.SearchCriteriaAnyAirport();
-            var searchCriteria = _parser.ParseDeserialize<SearchString>(search)!;
+            var searchCriteria = _parser.ParseReturnInstanceSingle<SearchString>(search)!;
 
             //Act
             List<Hotel> result = _queryer.QueryHotels(_hotels, searchCriteria);
@@ -137,7 +137,7 @@ namespace HolidaySearcherAppTests.ServicesTests
         {
             //Arrange
             var search = TestData.SearchCriteriaNoMatchingResults();
-            var searchCriteria = _parser.ParseDeserialize<SearchString>(search)!;
+            var searchCriteria = _parser.ParseReturnInstanceSingle<SearchString>(search)!;
 
             //Act
             List<Hotel> result = _queryer.QueryHotels(_hotels, searchCriteria);
@@ -152,7 +152,7 @@ namespace HolidaySearcherAppTests.ServicesTests
         {
             //Arrange
             var search = TestData.SearchCriteriaMANAirport();
-            var searchCriteria = _parser.ParseDeserialize<SearchString>(search)!;
+            var searchCriteria = _parser.ParseReturnInstanceSingle<SearchString>(search)!;
             var flightobjects = TestData.GetFlightInstances();
             var hotelobjects = TestData.GetHotelInstances();
             var flights = _queryer.QueryFlights(flightobjects, searchCriteria);

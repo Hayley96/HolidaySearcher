@@ -27,7 +27,7 @@ namespace HolidaySearcherAppTests.ServicesTests
         {
             //Arrange
             var search = TestData.SearchCriteriaAnyLondonAirport();
-            var searchCriteria = _parser.ParseDeserialize<SearchString>(search)!;
+            var searchCriteria = _parser.ParseReturnInstanceSingle<SearchString>(search)!;
 
             //Act
             var result = _airportCode.IsListedAirport(searchCriteria, searchCriteria.DepartingFrom);
@@ -41,7 +41,7 @@ namespace HolidaySearcherAppTests.ServicesTests
         {
             //Arrange
             var search = TestData.SearchCriteriaNoMatchingAirport();
-            var searchCriteria = _parser.ParseDeserialize<SearchString>(search)!;
+            var searchCriteria = _parser.ParseReturnInstanceSingle<SearchString>(search)!;
 
             //Act
             var result = _airportCode.IsListedAirport(searchCriteria, searchCriteria.DepartingFrom);
@@ -55,7 +55,7 @@ namespace HolidaySearcherAppTests.ServicesTests
         {
             //Arrange
             var search = TestData.SearchCriteriaAnyLondonAirport();
-            var searchCriteria = _parser.ParseDeserialize<SearchString>(search)!;
+            var searchCriteria = _parser.ParseReturnInstanceSingle<SearchString>(search)!;
 
             //Act
             var result = _airportCode.Merge(searchCriteria, searchCriteria.DepartingFrom.ToString());
@@ -73,7 +73,7 @@ namespace HolidaySearcherAppTests.ServicesTests
         {
             //Arrange
             var search = TestData.SearchCriteriaAnyAirport();
-            var searchCriteria = _parser.ParseDeserialize<SearchString>(search)!;
+            var searchCriteria = _parser.ParseReturnInstanceSingle<SearchString>(search)!;
 
             //Act
             var result = _airportCode.Merge(searchCriteria, searchCriteria.DepartingFrom.ToString());

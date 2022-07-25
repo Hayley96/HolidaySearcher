@@ -19,9 +19,9 @@ namespace HolidaySearcherApp.Services
 
         public (List<Flight> Flight, List<Hotel> Hotel, int TotalCost) Run(string inputSearch)
         {
-            var _flights = _parser.ParseDeserializeList<Flight>(FileLoader.Load(FileLoader.Path("Flights.json")));
-            var _hotels = _parser.ParseDeserializeList<Hotel>(FileLoader.Load(FileLoader.Path("Hotels.json")));
-            var _searchString = _parser.ParseDeserialize<SearchString>(inputSearch);
+            var _flights = _parser.ParseReturnInstanceList<Flight>(FileLoader.Load(FileLoader.Path("Flights.json")));
+            var _hotels = _parser.ParseReturnInstanceList<Hotel>(FileLoader.Load(FileLoader.Path("Hotels.json")));
+            var _searchString = _parser.ParseReturnInstanceSingle<SearchString>(inputSearch);
 
             SearchString searchCriteria = _airportCode.IsListedAirport(_searchString, _searchString.DepartingFrom) ?
                 _airportCode.IsListedAirport(_searchString, _searchString.TravelingTo) ?
