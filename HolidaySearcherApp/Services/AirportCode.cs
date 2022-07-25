@@ -5,9 +5,9 @@ namespace HolidaySearcherApp.Services
     public class AirportCode
     {
         private const string DELIMITER = ",";
-        public bool IsListedAirport(SearchString searchstring) =>
-            AirportCodes.Codes.ContainsKey(searchstring.DepartingFrom.ToString()) ||
-                AirportCodes.Codes.Values.Where(v => v.Contains(searchstring.DepartingFrom)).Count() > 0;
+        public bool IsListedAirport(SearchString searchstring, string property) =>
+            AirportCodes.Codes.ContainsKey(property) ||
+                AirportCodes.Codes.Values.Where(v => v.Contains(property)).Count() > 0;
 
         public SearchString Merge(SearchString search, string valueToCheck)
         {

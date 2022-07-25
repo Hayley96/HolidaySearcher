@@ -30,7 +30,7 @@ namespace HolidaySearcherAppTests.ServicesTests
             var searchCriteria = _parser.ParseDeserialize<SearchString>(search)!;
 
             //Act
-            var result = _airportCode.IsListedAirport(searchCriteria);
+            var result = _airportCode.IsListedAirport(searchCriteria, searchCriteria.DepartingFrom);
 
             //Assert
             Assert.That(result, Is.True);
@@ -44,7 +44,7 @@ namespace HolidaySearcherAppTests.ServicesTests
             var searchCriteria = _parser.ParseDeserialize<SearchString>(search)!;
 
             //Act
-            var result = _airportCode.IsListedAirport(searchCriteria);
+            var result = _airportCode.IsListedAirport(searchCriteria, searchCriteria.DepartingFrom);
 
             //Assert
             Assert.That(result, Is.False);
