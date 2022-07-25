@@ -12,9 +12,6 @@ namespace HolidaySearcherApp.Services
         public T ParseDeserialize<T>(string json) =>
             JsonConvert.DeserializeObject<T>(json)!;
 
-        public string ParseSerialize<T>(List<T> itemToSerialize) =>
-            JsonConvert.SerializeObject(itemToSerialize);
-
         public bool IsValidJson(string json)
         {
             try
