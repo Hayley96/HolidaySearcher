@@ -83,21 +83,21 @@ Fork this repo to your Github and then clone the forked version of this repo.
 	- This application requires a path pointing to the data files. By default the path is set using the 'Visual Studio Default Working Directory' and returning its great grand-parent directory (project root folder). This now defaults to: [.\HolidaySearcherAppTests\Data](./HolidaySearcherAppTests/Data)
 	 - If your 'Default Working Directory' is not set to application root '\bin\Debug\net6.0', then you will need to specify a new file path:
        - To change the filepath in the appliation, you will need to modify the path in the following file:
-	      * [FileLoader.cs](https://github.com/Hayley96/HolidaySearcher/blob/main/HolidaySearcherApp/HolidaySearcherApp/Services/FileLoader.cs)
+	      * [FileLoader.cs](https://github.com/Hayley96/HolidaySearcher/blob/main/HolidaySearcherApp/Services/FileLoader.cs)
 
 ### Restore Dependencies <a name="restoredependencies"></a>
 
-- Open up a terminal and navigate to the root folder of the main application directory [HolidaySearcherApp](./HolidaySearcherApp/HolidaySearcherApp):
+- Open up a terminal and navigate to the root folder of the main application directory [HolidaySearcherApp](./HolidaySearcherApp):
  - run: `dotnet restore`
 
 ### Running the Unit Tests <a name="runningtests"></a>
 
-- You can run the unit tests in Visual Studio, or you can go to your terminal and inside the root of this directory [HolidaySearcherApp](./HolidaySearcherApp/HolidaySearcherApp):
+- You can run the unit tests in Visual Studio, or you can go to your terminal and inside the root folder of the project [HolidaySearcher](../../):
  - run: `dotnet test`
 
 
 ### Main Entry Point <a name="mainentrypoint"></a>
-- The Main Entry Point for the application is: [HolidaySearch.cs](https://github.com/Hayley96/HolidaySearcher/blob/main/HolidaySearcherApp/HolidaySearcherApp/Services/HolidaySearch.cs)
+- The Main Entry Point for the application is: [HolidaySearch.cs](https://github.com/Hayley96/HolidaySearcher/blob/main/HolidaySearcherApp/Services/HolidaySearch.cs)
 
 
 ## Thank you!! 👋
